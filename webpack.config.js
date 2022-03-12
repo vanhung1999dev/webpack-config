@@ -10,6 +10,21 @@ module.exports = {
         clean: true
     },
     plugins: [
-        new HtmlWebpackPlugin()
+        new HtmlWebpackPlugin({
+            filename: './dist/index.html',
+            title:'webpack'
+        })
     ],
+    devServer: {
+        static: path.resolve(__dirname, 'dist'),
+        open: true,
+        port: 3000,
+        hot: true,
+        client: {
+            overlay: {
+                errors: true,
+                warnings: false,
+            }
+        }
+    }
 }
