@@ -1,8 +1,9 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+let mode = 'development';
+if (process.env === 'production') mode = production;
 module.exports = {
-    mode: "development",
+    mode: mode,
     entry: "./src/index.js",
     output: {
         filename: 'index.js',
@@ -20,7 +21,7 @@ module.exports = {
             }
         ]
     },
-    devtool: false,
+    devtool: "source-map",
     devServer: {
         allowedHosts: 'all',
         port: 4000,
