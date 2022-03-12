@@ -1,0 +1,7 @@
+@use "variable";
+
+body {
+    background-color: variable.$bg;
+    font-size: variable.$sz;
+    color: variable.$color;
+}

@@ -1,8 +1,10 @@
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+let mode = 'development';
+if (process.env === 'production') mode = production;
 module.exports = {
-    mode: "development",
+    mode: mode,
     entry: "./src/index.js",
     output: {
         filename: 'index.js',
@@ -17,10 +19,17 @@ module.exports = {
                     loader: "babel-loader"
                 }
 
+            },
+            {
+                test: /\.s?[a|c]ss$/,
+                use: [MiniCssExtractPlugin.loader, "css-loader","sass-loader"]
             }
         ]
     },
-    devtool: false,
+    devtool: "source-map",
+    plugins: [
+        new MiniCssExtractPlugin()
+    ],
     devServer: {
         allowedHosts: 'all',
         port: 4000,
