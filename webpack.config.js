@@ -7,9 +7,34 @@ module.exports = {
     output: {
         filename: 'index.js',
         path: path.resolve(__dirname, 'dist'),
-        clean: true
     },
-    plugins: [
-        new HtmlWebpackPlugin()
-    ],
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader"
+                }
+
+            }
+        ]
+    },
+    devtool: false,
+    devServer: {
+        allowedHosts: 'all',
+        port: 4000,
+        open: true,
+        static: {
+            directory: path.resolve(__dirname, './dist'),
+            watch: true
+        },
+        hot: true,
+        client: {
+            overlay: {
+                errors: true,
+                warnings: false,
+            }
+        }
+    }
 }
