@@ -13,7 +13,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.jsx?$/,
                 exclude: /node_modules/,
                 use: {
                     loader: "babel-loader"
@@ -30,6 +30,14 @@ module.exports = {
     plugins: [
         new MiniCssExtractPlugin()
     ],
+    resolve: {
+        modules: ["src", "node_modules"],
+        extensions: [".js", ".jsx", "scss"],
+        alias: {
+            components: path.resolve(__dirname, 'src/components'),
+            styles: path.resolve(__dirname, 'src/styles')
+        }
+    },
     devServer: {
         allowedHosts: 'all',
         port: 4000,
