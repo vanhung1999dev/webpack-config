@@ -1,9 +1,4 @@
-import './styles/index.scss';
+import { render } from 'react-dom';
+import App from 'components/App';
 
-const object = {
-    field: 'field',
-    property:'property'
-}
-
-
-console.log('object', object);
+render(<App />, document.getElementById('root'));
